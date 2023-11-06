@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "924778291203",
+    "project_id": "alien-limiter-402809",
+    "storage_bucket": "alien-limiter-402809.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924778291203:android:51477bb905acb7720cee36",
+        "android_client_info": {
+          "package_name": "com.example.daily"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbXpOSqDIl0rpiJJcGsCOenixvsdHQTzA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
