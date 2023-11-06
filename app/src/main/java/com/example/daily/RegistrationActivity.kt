@@ -46,6 +46,8 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
 
+
+
         /*var btnReg : Button = findViewById(R.id.btnRegSubmit)
         btnReg.setOnClickListener {
             var email : EditText = findViewById(R.id.regEmail)
@@ -61,4 +63,6 @@ class RegistrationActivity : AppCompatActivity() {
         ContactModel contactModel = new ContactModel("Rafi","122333");
         contactRef.child(contactId).setValue(contactModel)*/
     }
+
 }
+
