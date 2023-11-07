@@ -24,8 +24,8 @@ private lateinit var firebaseAuth: FirebaseAuth
 
         binding.btnLogin.setOnClickListener(View.OnClickListener {
             val ihome = Intent(this@LoginActivity, MainActivity::class.java)
-            val pref = getSharedPreferences("login", MODE_PRIVATE)
-            val editor = pref.edit()
+
+            val editor = getSharedPreferences("login", MODE_PRIVATE).edit()
             // login Condition
 
             val edtEmail = binding.edtName.text.toString()
@@ -34,8 +34,7 @@ private lateinit var firebaseAuth: FirebaseAuth
                 firebaseAuth.signInWithEmailAndPassword(edtEmail,edtPassword).addOnCompleteListener(this){ task ->
                     if (task.isSuccessful){
                         Toast.makeText(this@LoginActivity,"Please hold for a while",Toast.LENGTH_SHORT).show()
-                        editor.putBoolean("flag", true)
-                        editor.apply()
+                        editor.putBoolean("loginFlag", true).apply()
                         startActivity(ihome)
                         finish()
                     }else{

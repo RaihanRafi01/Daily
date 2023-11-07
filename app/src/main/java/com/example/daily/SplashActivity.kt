@@ -12,15 +12,16 @@ class SplashActivity : AppCompatActivity() {
         val iHome = Intent(this@SplashActivity, MainActivity::class.java)
         val ilogin = Intent(this@SplashActivity, LoginActivity::class.java)
         Handler().postDelayed({
-            val pref = getSharedPreferences("login", MODE_PRIVATE)
-            val check = pref.getBoolean("flag", false)
+            /*val check = getSharedPreferences("login", MODE_PRIVATE).getBoolean("loginFlag", false)
             if (check) {
                 startActivity(iHome)
                 finish()
             } else {
                 startActivity(ilogin)
                 finish()
-            }
+            }*/
+            startActivity(iHome)
+            finish()
         }, 3000)
     }
 }

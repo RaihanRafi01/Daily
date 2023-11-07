@@ -21,17 +21,33 @@ class RegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         firebaseAuth = FirebaseAuth.getInstance()
+
+
+
+
+        var dbRef : DatabaseReference = FirebaseDatabase.getInstance().getReference("Daily")
+
+
+
         binding.btnRegSubmit.setOnClickListener {
+            /// initial values
+            var name = binding.regName.text.toString()
+            var number = binding.regNumber.text.toString()
             val email = binding.regEmail.text.toString()
             val pass = binding.regPass.text.toString()
 
-            if (email.isNotEmpty() && pass.isNotEmpty()) {
+
+            if (email.isNotEmpty() && pass.isNotEmpty() && name.isNotEmpty() && number.isNotEmpty()) {
                 firebaseAuth.createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener(this){ task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "SignUp Successful", Toast.LENGTH_SHORT).show()
+                        var UID = firebaseAuth.currentUser?.uid.toString()
+                        var model = UserLoginModel(name,number,email,pass)
+
+                        dbRef.child("Registration").child(UID).setValue(model)
+
                         val iLogin = Intent(this, LoginActivity::class.java)
                         startActivity(iLogin)
                         finish()
@@ -43,6 +59,8 @@ class RegistrationActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Please Provide Email and Password", Toast.LENGTH_SHORT).show()
             }
+
+
         }
 
 

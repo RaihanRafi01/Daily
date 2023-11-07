@@ -1,5 +1,6 @@
 package com.example.daily
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -17,5 +18,11 @@ class MainActivity : ComponentActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         var uid = firebaseAuth.currentUser?.uid.toString()
         Log.e("UID",uid)
+
+        binding.btnLogout.setOnClickListener {
+            val iLogin = Intent(this@MainActivity, LoginActivity::class.java)
+            getSharedPreferences("login", MODE_PRIVATE).edit().putBoolean("loginFlag", false).apply()
+            startActivity(iLogin)
+        }
     }
 }
