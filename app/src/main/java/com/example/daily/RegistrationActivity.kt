@@ -46,7 +46,7 @@ class RegistrationActivity : AppCompatActivity() {
                         var UID = firebaseAuth.currentUser?.uid.toString()
                         var model = UserLoginModel(name,number,email,pass)
 
-                        dbRef.child("Registration").child(UID).setValue(model)
+                        dbRef.child("UserInfo").child(UID).setValue(model)
 
                         val iLogin = Intent(this, LoginActivity::class.java)
                         startActivity(iLogin)

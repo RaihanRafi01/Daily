@@ -19,6 +19,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.example.daily.databinding.ActivityHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -32,9 +33,8 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var dbref : DatabaseReference
-    private lateinit var storageRef : StorageReference
-    private lateinit var firebaseFirestore : FirebaseFirestore
+    private var dbref =  Firebase.database.getReference("Daily")
+    private val UID = FirebaseAuth.getInstance().uid.toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,17 +70,20 @@ class HomeActivity : AppCompatActivity() {
         val pic = header.findViewById<ImageView>(R.id.imgUser)
 
         pic.setImageResource(R.drawable.batmanlogo)
+        dbref.child("UserInfo").child(UID).child("Images").get().addOnSuccessListener {
+            val url = it.child("url").value.toString()
+            Glide.with(this).load(url).into(pic)
+        }
 
-        initVars()
         pic.setOnClickListener(View.OnClickListener {
             Toast.makeText(this,"yeeeeeeeeeeeeeeeee hold",Toast.LENGTH_SHORT).show()
             val iUpdateProfile = Intent(this@HomeActivity, UpdateProfile::class.java)
             startActivity(iUpdateProfile)
         })
 
-        val UID = FirebaseAuth.getInstance().uid.toString()
-        dbref = Firebase.database.getReference("Daily")
-        dbref.child("Registration").child(UID).get().addOnSuccessListener {
+
+        //dbref = Firebase.database.getReference("Daily")
+        dbref.child("UserInfo").child(UID).get().addOnSuccessListener {
             val currentName = it.child("name").value.toString()
             val currentEmail = it.child("email").value.toString()
             Log.e("NAME ",currentName)
@@ -102,12 +105,6 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-
-
-    private fun initVars() {
-       storageRef = FirebaseStorage.getInstance().reference.child("Images")
-        firebaseFirestore = FirebaseFirestore.getInstance()
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
