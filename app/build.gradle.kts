@@ -56,6 +56,7 @@ android {
 dependencies {
 
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.google.android.material:material:1.11.0-beta01")
 
     implementation(platform("com.google.firebase:firebase-bom:32.5.0"))
     implementation("com.google.firebase:firebase-auth")
@@ -67,10 +68,10 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.2.0")
     annotationProcessor("androidx.room:room-compiler:2.6.0")
 
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.amitshekhar.android:android-networking:1.0.2")
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.0")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
