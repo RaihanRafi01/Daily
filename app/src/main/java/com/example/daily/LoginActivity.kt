@@ -23,7 +23,7 @@ private lateinit var firebaseAuth: FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.btnLogin.setOnClickListener(View.OnClickListener {
-            val ihome = Intent(this@LoginActivity, MainActivity::class.java)
+            val ihome = Intent(this@LoginActivity, HomeActivity::class.java)
 
             val editor = getSharedPreferences("login", MODE_PRIVATE).edit()
             // login Condition

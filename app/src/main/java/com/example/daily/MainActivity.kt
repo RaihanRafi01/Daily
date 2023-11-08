@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : ComponentActivity() {
     private lateinit var binding : MainBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var toggle: ActionBarDrawerToggle
+   // private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = MainBinding.inflate(layoutInflater)
@@ -23,11 +23,11 @@ class MainActivity : ComponentActivity() {
         var uid = firebaseAuth.currentUser?.uid.toString()
         Log.e("UID",uid)
 
-        toggle = ActionBarDrawerToggle(this@MainActivity,drawer,R.string.open_nav,R.string.close_nav)
+        /*toggle = ActionBarDrawerToggle(this@MainActivity,drawer,R.string.open_nav,R.string.close_nav)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
         actionBar?.setDisplayHomeAsUpEnabled(true)
-
+*/
 
 
        /* binding.btnLogout.setOnClickListener {
