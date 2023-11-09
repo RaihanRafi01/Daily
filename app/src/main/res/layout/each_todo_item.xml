@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:elevation="10dp"
+    app:cardUseCompatPadding="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="20dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/anim_tic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="#00DC6A6A"
+            android:backgroundTint="#7AAF2B2B"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_rawRes="@raw/animtic">
+
+        </com.airbnb.lottie.LottieAnimationView>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.509" />
+
+        <ImageView
+            android:id="@+id/todoEdit"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_edit_24" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            app:layout_constraintBottom_toBottomOf="@+id/anim_tic"
+            app:layout_constraintEnd_toEndOf="@+id/anim_tic"
+            app:layout_constraintStart_toStartOf="@+id/anim_tic"
+            app:layout_constraintTop_toTopOf="@+id/anim_tic"
+            app:srcCompat="@drawable/outline_circle_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

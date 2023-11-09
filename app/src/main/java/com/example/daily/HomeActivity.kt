@@ -57,7 +57,7 @@ class HomeActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow , R.id.nav_todo
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -92,17 +92,6 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
-
-       /* var FRAGHOME = binding.drawerLayout.findFragment<Fragment>(R.id.nav_home)
-        FRAGHOME.*/
-            /*Toast.makeText(this,"yeeeeeeeeeeeeeeeee",Toast.LENGTH_SHORT).show()*/
-
-
-
     }
 
 
@@ -117,9 +106,6 @@ class HomeActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
-        return super.onCreateView(name, context, attrs)
-    }
 
 
 
