@@ -50,13 +50,9 @@ class RegistrationActivity : AppCompatActivity() {
         initval()
 
 
-
-
         binding.imgUp.setOnClickListener(View.OnClickListener {
             resultLauncher.launch("image/*")
         })
-
-
 
         binding.btnRegSubmit.setOnClickListener {
 
