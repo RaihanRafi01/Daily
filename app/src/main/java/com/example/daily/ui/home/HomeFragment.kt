@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.daily.databinding.FragmentHomeBinding
+import com.example.daily.ui.todo.ToDoFragment
 
 class HomeFragment : Fragment() {
 
@@ -31,9 +32,17 @@ class HomeFragment : Fragment() {
         val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-            binding.btnFragHome.setOnClickListener {
 
-            }
+
+        }
+        _binding!!.btnFragHome.setOnClickListener {
+
+        }
+        val fragment : ToDoFragment
+
+
+
+        binding.btnFragHome.setOnClickListener {
 
         }
         return root

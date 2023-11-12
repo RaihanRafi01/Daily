@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".UpdateProfile">
 
-    <ImageView
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgUp"
         android:layout_width="145dp"
         android:layout_height="112dp"
@@ -15,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_image_search_24" />
+        android:src="@drawable/baseline_image_search_24" />
 
     <EditText
         android:id="@+id/updNumber"
@@ -72,10 +73,10 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="100dp"
         android:layout_height="96dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="136dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

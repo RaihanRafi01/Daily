@@ -3,6 +3,7 @@ package com.example.daily.ui.todo
 import android.annotation.SuppressLint
 import android.opengl.Visibility
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.time.LocalDate
+import kotlin.properties.Delegates
 
 private lateinit var binding: FragmentToDoBinding
 private var popUpFragment : AddTodoPopUpFragment? = null
@@ -33,6 +35,7 @@ private val UID = FirebaseAuth.getInstance().uid.toString()
 private var dbref =  Firebase.database.getReference("Daily").child("Tasks").child(UID)
 private lateinit var adapterTODO : ToDoAdapter
 private lateinit var todoList  :MutableList<ToDoData>
+
 class ToDoFragment : Fragment(), AddTodoPopUpFragment.DialogAddTodoClickListener,
     ToDoAdapter.ToDoAdapterClicksInterface {
 
@@ -56,6 +59,20 @@ class ToDoFragment : Fragment(), AddTodoPopUpFragment.DialogAddTodoClickListener
         val week = currentDate.dayOfWeek.toString()
         binding.txtMonth.text = day+" "+month.take(3)
         binding.txtDay.text = "  "+week
+        //taskCount()
+
+    }
+
+    private fun taskCount() {
+        var taskCount = adapterTODO.itemCount
+        Handler().postDelayed({
+            if (taskCount==0){
+                binding.txtNote.text = "No task to do"
+            }
+            else {
+                binding.txtNote.text = taskCount.toString()+" Tasks remaining"
+            }
+        }, 400)
     }
 
     private fun getDataFromFireBase() {
@@ -71,6 +88,7 @@ class ToDoFragment : Fragment(), AddTodoPopUpFragment.DialogAddTodoClickListener
                     }
                 }
                 adapterTODO.notifyDataSetChanged()
+                taskCount()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -112,6 +130,8 @@ class ToDoFragment : Fragment(), AddTodoPopUpFragment.DialogAddTodoClickListener
             }
             todotxt.text = null
             popUpFragment!!.dismiss()
+            taskCount()
+
         }
     }
 
@@ -126,6 +146,7 @@ class ToDoFragment : Fragment(), AddTodoPopUpFragment.DialogAddTodoClickListener
             }
             todotxt.text = null
             popUpFragment!!.dismiss()
+
         }
     }
 
@@ -136,6 +157,7 @@ class ToDoFragment : Fragment(), AddTodoPopUpFragment.DialogAddTodoClickListener
             }else{
                 Toast.makeText(context,it.exception?.message,Toast.LENGTH_LONG).show()
             }
+            taskCount()
         }
     }
 

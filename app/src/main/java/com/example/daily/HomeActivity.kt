@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -19,8 +21,10 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.example.daily.databinding.ActivityHomeBinding
+import com.example.daily.ui.todo.ToDoFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -43,8 +47,8 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
-        setSupportActionBar(binding.appBarHome.toolbar)
+        val appbarHome = binding.appBarHome.toolbar
+        setSupportActionBar(appbarHome)
 
         binding.appBarHome.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -57,7 +61,7 @@ class HomeActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow , R.id.nav_todo
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow , R.id.nav_todo , R.id.action_logout
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -76,7 +80,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         pic.setOnClickListener(View.OnClickListener {
-            Toast.makeText(this,"yeeeeeeeeeeeeeeeee hold",Toast.LENGTH_SHORT).show()
+           // Toast.makeText(this,"yeeeeeeeeeeeeeeeee hold",Toast.LENGTH_SHORT).show()
             val iUpdateProfile = Intent(this@HomeActivity, UpdateProfile::class.java)
             startActivity(iUpdateProfile)
         })
@@ -95,10 +99,24 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
+
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.drawer_example, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.getItemId() == R.id.action_logout){
+            val iLogin = Intent(this@HomeActivity, LoginActivity::class.java)
+            getSharedPreferences("login", MODE_PRIVATE).edit().putBoolean("loginFlag", false).apply()
+            startActivity(iLogin)
+        }
+        else if (item.getItemId() == R.id.action_settings){
+            Toast.makeText(this, "Clicked Settings Icon..", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onSupportNavigateUp(): Boolean {

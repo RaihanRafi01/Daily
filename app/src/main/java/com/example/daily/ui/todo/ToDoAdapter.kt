@@ -16,6 +16,7 @@ class ToDoAdapter (private val list:MutableList<ToDoData>):
     fun setListner(listener:ToDoAdapterClicksInterface){
         this.listener = listener
     }
+    /////// +++++++++++++++ >>>>>>>>////////////
     inner class ToDoViewHolder(val binding:EachTodoItemBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToDoViewHolder {
