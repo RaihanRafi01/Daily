@@ -32,12 +32,13 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var storageRef : FirebaseStorage
     private lateinit var firebaseFirestore : FirebaseFirestore
     private lateinit var imageUri : Uri
-    var UID = FirebaseAuth.getInstance().uid.toString()
-    val databaseRef = FirebaseDatabase.getInstance().getReference("Daily")
-    lateinit var name: String
-    lateinit var number : String
-    lateinit var email : String
-    lateinit var pass : String
+    private var UID = FirebaseAuth.getInstance().uid.toString()
+    private val databaseRef = FirebaseDatabase.getInstance().getReference("Daily")
+    private lateinit var name: String
+    private lateinit var number : String
+    private lateinit var email : String
+    private lateinit var pass : String
+    private lateinit var mapImage : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
@@ -64,12 +65,12 @@ class RegistrationActivity : AppCompatActivity() {
                         .addOnCompleteListener(this){ task ->
                             if (task.isSuccessful) {
                                 Toast.makeText(this, "SignUp Successful", Toast.LENGTH_SHORT).show()
-                                var model = UserLoginModel(name,number,email,pass)
-                                UID = firebaseAuth.currentUser?.uid.toString()
-                                databaseRef.child("UserInfo").child(UID).setValue(model)
-                                val iLogin = Intent(this, LoginActivity::class.java)
                                 uploadImg()
+                                UID = firebaseAuth.currentUser?.uid.toString()
                                 Handler().postDelayed({
+                                    val model = UserLoginModel(name,number,email,pass,mapImage,UID)
+                                    databaseRef.child("UserInfo").child(UID).setValue(model)
+                                    val iLogin = Intent(this, LoginActivity::class.java)
                                     startActivity(iLogin)
                                     finish()
                                 }, 9000)
@@ -102,10 +103,10 @@ class RegistrationActivity : AppCompatActivity() {
         storageRef.getReference("images").child(System.currentTimeMillis().toString())
             .putFile(imageUri).addOnSuccessListener {task ->
                 task.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
-                    val mapImage = mapOf("url" to it.toString())
-                    databaseRef.child("UserInfo").child(UID).child("Images").setValue(mapImage).addOnSuccessListener {
+                    mapImage =  it.toString()
+                   /* databaseRef.child("UserInfo").child(UID).setValue(mapImage).addOnSuccessListener {
                         Toast.makeText(this,"Picture Uploaded Please hold",Toast.LENGTH_SHORT).show()
-                    }
+                    }*/
                 }
             }
     }
@@ -147,5 +148,8 @@ class RegistrationActivity : AppCompatActivity() {
         return true
     }
 
+
+
 }
+
 

@@ -74,8 +74,8 @@ class HomeActivity : AppCompatActivity() {
         val pic = header.findViewById<ImageView>(R.id.imgUser)
 
         pic.setImageResource(R.drawable.batmanlogo)
-        dbref.child("UserInfo").child(UID).child("Images").get().addOnSuccessListener {
-            val url = it.child("url").value.toString()
+        dbref.child("UserInfo").child(UID).get().addOnSuccessListener {
+            val url = it.child("imgUrl").value.toString()
             Glide.with(this).load(url).into(pic)
         }
 

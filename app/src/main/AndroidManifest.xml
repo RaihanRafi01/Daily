@@ -25,6 +25,26 @@
         android:theme="@style/Theme.Daily"
         tools:targetApi="31">
         <activity
+            android:name=".NewMessageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Daily.ActionBar">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MessageActivity"/>
+        </activity>
+        <activity
+            android:name=".MessageActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Daily.ActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
+        <activity
             android:name=".UpdateProfile"
             android:exported="false" />
         <activity
@@ -35,11 +55,7 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".RegistrationActivity"

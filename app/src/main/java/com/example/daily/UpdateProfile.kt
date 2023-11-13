@@ -39,7 +39,7 @@ class UpdateProfile : AppCompatActivity() {
         var upEmail = binding.updEmail.text.toString()
         var upNumber = binding.updNumber.text.toString()
         if (upEmail.isNotEmpty() && upName.isNotEmpty() && upNumber.isNotEmpty()){
-            var model = UserLoginModel(upName,upNumber,upEmail)
+            var model = UserLoginModel(upName,upNumber,upEmail,"d","d","d")
             databaseRef.child("UserInfo").child(UID).setValue(model)
             Toast.makeText(this,"Updated",Toast.LENGTH_SHORT).show()
         }else{
@@ -68,8 +68,8 @@ class UpdateProfile : AppCompatActivity() {
         storageRef.getReference("images").child(System.currentTimeMillis().toString())
             .putFile(imageUri).addOnSuccessListener {task ->
                 task.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
-                    val mapImage = mapOf("url" to it.toString())
-                    databaseRef.child("UserInfo").child(UID).child("Images").setValue(mapImage).addOnSuccessListener {
+                    val mapImage = mapOf("imgUrl" to it.toString())
+                    databaseRef.child("UserInfo").child(UID).setValue(mapImage).addOnSuccessListener {
                         Toast.makeText(this,"Picture Uploaded Please hold",Toast.LENGTH_SHORT).show()
                     }
                 }
