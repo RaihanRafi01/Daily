@@ -6,13 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.daily.HomeActivity
-import com.example.daily.MessageActivity
+import com.example.daily.messages.MessageActivity
 import com.example.daily.databinding.FragmentHomeBinding
-import com.example.daily.ui.todo.ToDoFragment
 
 class HomeFragment : Fragment() {
 
@@ -40,7 +37,7 @@ class HomeFragment : Fragment() {
 
         }
         binding.btnMsgActivity.setOnClickListener {
-            val imsg= Intent(requireContext(),MessageActivity::class.java)
+            val imsg= Intent(requireContext(), MessageActivity::class.java)
             startActivity(imsg)
         }
         return root

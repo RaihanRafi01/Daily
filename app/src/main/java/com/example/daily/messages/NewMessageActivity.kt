@@ -1,13 +1,12 @@
-package com.example.daily
+package com.example.daily.messages
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.daily.R
 import com.example.daily.databinding.ActivityNewMessageBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -25,18 +24,12 @@ class NewMessageActivity : AppCompatActivity() {
         binding = ActivityNewMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = "Select User"
-        /*val adapter = GroupAdapter<GroupieViewHolder>()
 
-        adapter.add(UserItem())
-        adapter.add(UserItem())
-        adapter.add(UserItem())
-
-
-
-       binding.recylerNewMsg.adapter = adapter*/
         fetchUsers()
     }
-
+companion object{
+    val USER_KEY = "USER_KEY"
+}
     private fun fetchUsers() {
         val ref = FirebaseDatabase.getInstance().getReference("Daily").child("/UserInfo")
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -48,6 +41,12 @@ class NewMessageActivity : AppCompatActivity() {
                     if (user != null){
                         adapter.add(UserItem(user))
                     }
+                }
+                adapter.setOnItemClickListener { item, view ->
+                    val userItem = item as UserItem
+                    val iChat = Intent(view.context,ChatLogActivity::class.java)
+                    //iChat.putExtra(USER_KEY,userItem.user)
+                    startActivity(iChat)
                 }
                 binding.recylerNewMsg.adapter = adapter
             }
