@@ -3,6 +3,7 @@ package com.example.daily.messages
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import kotlinx.android.parcel.Parcelize
 
 class NewMessageActivity : AppCompatActivity() {
     private lateinit var binding : ActivityNewMessageBinding
@@ -36,7 +38,7 @@ companion object{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val adapter = GroupAdapter<GroupieViewHolder>()
                 snapshot.children.forEach {
-                    Log.d("New msg",it.toString())
+                    //Log.d("New msg",it.toString())
                     val user = it.getValue(UserModel::class.java)
                     if (user != null){
                         adapter.add(UserItem(user))
@@ -45,7 +47,7 @@ companion object{
                 adapter.setOnItemClickListener { item, view ->
                     val userItem = item as UserItem
                     val iChat = Intent(view.context,ChatLogActivity::class.java)
-                    //iChat.putExtra(USER_KEY,userItem.user)
+                    iChat.putExtra(USER_KEY,userItem.user)
                     startActivity(iChat)
                 }
                 binding.recylerNewMsg.adapter = adapter
@@ -69,7 +71,8 @@ class UserItem(val user : UserModel) : Item<GroupieViewHolder>(){
     }
 
 }
-class UserModel (var email : String , var imgUrl : String ,var name : String , var number : String , var password : String , var uid : String ){
+@Parcelize
+class UserModel (var email : String , var imgUrl : String ,var name : String , var number : String , var password : String , var uid : String ) : Parcelable{
     constructor() : this("","","","","","")
 
 }

@@ -9,8 +9,15 @@ import com.example.daily.LoginActivity
 import com.example.daily.R
 import com.example.daily.databinding.ActivityMessageBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MessageActivity : AppCompatActivity() {
+    companion object {
+        var currentUser : UserModel? = null
+    }
     private lateinit var binding : ActivityMessageBinding
     private val UID = FirebaseAuth.getInstance().uid
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +25,21 @@ class MessageActivity : AppCompatActivity() {
         binding = ActivityMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar!!.title = "Messenger"
+        fetchCurrentUser()
+    }
+
+    private fun fetchCurrentUser() {
+        val ref = FirebaseDatabase.getInstance().getReference("Daily/UserInfo/$UID")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+               currentUser = snapshot.getValue(UserModel::class.java)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

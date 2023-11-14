@@ -34,8 +34,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyChatLog"
-        android:layout_width="416dp"
-        android:layout_height="590dp"
+        android:layout_width="413dp"
+        android:layout_height="644dp"
         android:background="#57CADF"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/edtxtMsg"
