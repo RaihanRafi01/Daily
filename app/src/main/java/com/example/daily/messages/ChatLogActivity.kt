@@ -99,6 +99,10 @@ class ChatLogActivity : AppCompatActivity() {
                 binding.recyChatLog.scrollToPosition(adapter.itemCount -1)
             }
             toRef.setValue(chatMessage)
+            val latestMsgRef = FirebaseDatabase.getInstance().getReference("Daily/LatestMessages/$UID/$toId")
+            latestMsgRef.setValue(chatMessage)
+            val latestMsgToRef = FirebaseDatabase.getInstance().getReference("Daily/LatestMessages/$toId/$UID")
+            latestMsgToRef.setValue(chatMessage)
     }
 }
 class ChatFromItem(val text : String, val user: UserModel?) : Item<GroupieViewHolder>() {

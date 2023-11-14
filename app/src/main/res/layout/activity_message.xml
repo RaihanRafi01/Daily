@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".messages.MessageActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="msg"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="186dp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recylerLatestMsg"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

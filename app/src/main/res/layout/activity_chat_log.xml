@@ -10,7 +10,6 @@
         android:id="@+id/edtxtMsg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="Enter Message..."
         android:inputType="text"
@@ -18,27 +17,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnSendMsg"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSendMsg" />
 
     <ImageView
         android:id="@+id/btnSendMsg"
         android:layout_width="52dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975"
+        app:layout_constraintVertical_bias="0.992"
         app:srcCompat="@drawable/baseline_send_24" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyChatLog"
-        android:layout_width="413dp"
-        android:layout_height="644dp"
+        android:layout_width="401dp"
+        android:layout_height="646dp"
         android:background="#57CADF"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/edtxtMsg"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
