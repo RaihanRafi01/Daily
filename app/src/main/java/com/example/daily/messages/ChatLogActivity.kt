@@ -23,7 +23,7 @@ class ChatLogActivity : AppCompatActivity() {
     }
     private val adapter = GroupAdapter<GroupieViewHolder>()
     private lateinit var binding : ActivityChatLogBinding
-    private var ref = FirebaseDatabase.getInstance().getReference("Daily").child("Messages")
+    //private var ref = FirebaseDatabase.getInstance().getReference("Daily").child("Messages")
     var UID = FirebaseAuth.getInstance().uid
     var toUser : UserModel? = null
 
@@ -44,7 +44,8 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
     private fun listenForMessages() {
-        ref.addChildEventListener(object : ChildEventListener{
+        val toId = toUser?.uid
+        FirebaseDatabase.getInstance().getReference("Daily/Messages/$UID/$toId").addChildEventListener(object : ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val chatMessage = snapshot.getValue(ChatMessage::class.java)
                 if (chatMessage != null){
@@ -89,10 +90,15 @@ class ChatLogActivity : AppCompatActivity() {
 
             val text = binding.edtxtMsg.text.toString()
             val toId = toUser?.uid
-            ref = ref.push()
-            val chatMessage = ChatMessage(ref.key,text, UID,toId,System.currentTimeMillis()/1000)
+            var fromRef = FirebaseDatabase.getInstance().getReference("Daily/Messages/$UID/$toId").push()
+            var toRef = FirebaseDatabase.getInstance().getReference("Daily/Messages/$toId/$UID").push()
+            val chatMessage = ChatMessage(fromRef.key,text, UID,toId,System.currentTimeMillis()/1000)
             Log.e("MSG",chatMessage.toString())
-            ref.setValue(chatMessage)
+            fromRef.setValue(chatMessage).addOnSuccessListener {
+                binding.edtxtMsg.text.clear()
+                binding.recyChatLog.scrollToPosition(adapter.itemCount -1)
+            }
+            toRef.setValue(chatMessage)
     }
 }
 class ChatFromItem(val text : String, val user: UserModel?) : Item<GroupieViewHolder>() {
