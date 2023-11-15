@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="73dp"
         android:layout_marginTop="4dp"
+        android:background="#EAEFEF"
         android:text="TextView"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/imgChatProfileTo"
