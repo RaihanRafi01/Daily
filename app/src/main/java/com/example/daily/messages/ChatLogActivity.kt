@@ -33,7 +33,8 @@ class ChatLogActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.recyChatLog.adapter = adapter
-        toUser = intent.getParcelableExtra<UserModel>(NewMessageActivity.USER_KEY)
+        toUser = intent.getParcelableExtra(NewMessageActivity.USER_KEY)
+
         supportActionBar?.title = toUser?.name
 
         listenForMessages()
