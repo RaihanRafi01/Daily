@@ -1,5 +1,5 @@
 
-#Daily App
+#Daily App 
 Welcome to Daily App, your go-to solution for managing daily activities with seamless integration of to-do lists and messaging features. Developed entirely in Kotlin, this project aims to enhance your daily productivity and communication in a single, user-friendly application.
 
 Features:
