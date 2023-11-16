@@ -1,13 +1,12 @@
 package com.example.daily.messages
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.daily.LoginActivity
 import com.example.daily.R
@@ -19,10 +18,14 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.j2objc.annotations.Weak
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
 class MessageActivity : AppCompatActivity() {
     companion object {
@@ -99,12 +102,33 @@ val latestMsgMap = HashMap<String,ChatLogActivity.ChatMessage>()
                     chatPartnerUser = snapshot.getValue(UserModel::class.java)
                     viewHolder.itemView.findViewById<TextView>(R.id.txtLatestName).text = chatPartnerUser?.name
                     Picasso.get().load(chatPartnerUser?.imgUrl).into(viewHolder.itemView.findViewById<ImageView>(R.id.imgLatestUser))
+                    //viewHolder.itemView.findViewById<TextView>(R.id.txtTimeStamp).text = chatPartnerUser?.email.toString()
+                    //Log.e("TIME",chatPartnerUser?.toString().toString())
                 }
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
             })
+
+            val date = Date(chatMsg.timeStamp)
+            var time = ""
+            //val afterWeak = Date(System.currentTimeMillis()+604800000)
+           //val afterDay = Date(System.currentTimeMillis()+86400000)
+            if (Date(System.currentTimeMillis()-86400000)>date){
+                val simpleDateFormat = SimpleDateFormat("E")
+                time = simpleDateFormat.format(date)
+            }
+            else if (Date(System.currentTimeMillis()-604800000)>date){
+                val simpleDateFormat = SimpleDateFormat("M")
+                time = simpleDateFormat.format(date)
+            }else{
+                val simpleDateFormat = SimpleDateFormat("hh:mm a")
+                time = simpleDateFormat.format(date)
+            }
+
+            viewHolder.itemView.findViewById<TextView>(R.id.txtTimeStamp).text = time
             viewHolder.itemView.findViewById<TextView>(R.id.txtLatestmsg).text = chatMsg.text
+
         }
 
         override fun getLayout(): Int {

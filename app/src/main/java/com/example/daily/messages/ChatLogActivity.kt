@@ -92,7 +92,7 @@ class ChatLogActivity : AppCompatActivity() {
             val toId = toUser?.uid
             var fromRef = FirebaseDatabase.getInstance().getReference("Daily/Messages/$UID/$toId").push()
             var toRef = FirebaseDatabase.getInstance().getReference("Daily/Messages/$toId/$UID").push()
-            val chatMessage = ChatMessage(fromRef.key,text, UID,toId,System.currentTimeMillis()/1000)
+            val chatMessage = ChatMessage(fromRef.key,text, UID,toId,(System.currentTimeMillis()))
             Log.e("MSG",chatMessage.toString())
             fromRef.setValue(chatMessage).addOnSuccessListener {
                 binding.edtxtMsg.text.clear()

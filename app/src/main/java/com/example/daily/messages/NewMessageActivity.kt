@@ -26,7 +26,6 @@ class NewMessageActivity : AppCompatActivity() {
         binding = ActivityNewMessageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.title = "Select User"
-
         fetchUsers()
     }
 companion object{
