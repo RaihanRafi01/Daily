@@ -25,7 +25,7 @@ Clone the Repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/DailyApp.git
+git clone [https://github.com/your-username/DailyApp.git](https://github.com/RaihanRafi01/Daily.git)
 Setup the Development Environment:
 
 Ensure you have the latest version of Android Studio installed.
