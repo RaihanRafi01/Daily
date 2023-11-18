@@ -119,7 +119,7 @@ val latestMsgMap = HashMap<String,ChatLogActivity.ChatMessage>()
                 time = simpleDateFormat.format(date)
             }
             else if (Date(System.currentTimeMillis()-604800000)>date){
-                val simpleDateFormat = SimpleDateFormat("M")
+                val simpleDateFormat = SimpleDateFormat("MMM")
                 time = simpleDateFormat.format(date)
             }else{
                 val simpleDateFormat = SimpleDateFormat("hh:mm a")
