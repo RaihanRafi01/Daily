@@ -127,6 +127,9 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     private fun CheckAllFields(): Boolean {
+        /*if ( ){
+            return false
+        }*/
         if (name.length == 0) {
             binding.regName.error = "Name is required"
             return false
