@@ -55,6 +55,10 @@ android {
 }
 
 dependencies {
+
+    implementation("com.squareup.retrofit2:converter-gson:2.2.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    
     implementation("com.squareup.picasso:picasso:2.8")
 
     implementation("com.github.lisawray.groupie:groupie:2.10.1")
@@ -82,6 +86,7 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.google.firebase:firebase-firestore:24.9.1")
     implementation("com.android.car.ui:car-ui-lib:2.5.1")
+
     annotationProcessor("androidx.room:room-compiler:2.6.0")
 
     implementation("com.google.android.gms:play-services-maps:18.2.0")
