@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.daily.messages.MessageActivity
 import com.example.daily.databinding.FragmentHomeBinding
+import com.example.daily.weather.WeatherMain
 
 class HomeFragment : Fragment() {
 
@@ -30,15 +31,19 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        /*val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
 
 
-        }
+        }*/
         binding.btnMsgActivity.setOnClickListener {
             val imsg= Intent(requireContext(), MessageActivity::class.java)
             startActivity(imsg)
+        }
+        binding.btnWeatherActivity.setOnClickListener {
+            val iweather= Intent(requireContext(), WeatherMain::class.java)
+            startActivity(iweather)
         }
         return root
     }

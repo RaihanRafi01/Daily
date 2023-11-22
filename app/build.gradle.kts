@@ -81,6 +81,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.3")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.google.firebase:firebase-firestore:24.9.1")
+    implementation("com.android.car.ui:car-ui-lib:2.5.1")
     annotationProcessor("androidx.room:room-compiler:2.6.0")
 
     implementation("com.google.android.gms:play-services-maps:18.2.0")
