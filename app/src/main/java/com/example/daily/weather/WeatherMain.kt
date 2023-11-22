@@ -88,9 +88,21 @@ class WeatherMain : AppCompatActivity() {
 
     private fun changeBG(conditions: String) {
         when(conditions){
-            "Haze" ->{
+            "Haze","Clouds","Overcast","Mist","Foggy","Partly Clouds" ->{
                 binding.root.setBackgroundResource(R.drawable.colud_background)
                 binding.lottieAnimationView.setAnimation(R.raw.cloud)
+            }
+            "Clear Sky","Sunny","Clear" ->{
+                binding.root.setBackgroundResource(R.drawable.sunny_background)
+                binding.lottieAnimationView.setAnimation(R.raw.sunny01)
+            }
+            "Light Rain","Drizzle","Moderate Rain","Rainy","Showers","Heavy Rain" ->{
+                binding.root.setBackgroundResource(R.drawable.rain_background)
+                binding.lottieAnimationView.setAnimation(R.raw.rain)
+            }
+            else ->{
+                binding.root.setBackgroundResource(R.drawable.sunny_background)
+                binding.lottieAnimationView.setAnimation(R.raw.sunny01)
             }
         }
         binding.lottieAnimationView.playAnimation()
