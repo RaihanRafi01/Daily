@@ -17,8 +17,6 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.concurrent.locks.Condition
-
-// https://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=4c212dc1137c7ab4b1fdcd272acdbe9b
 class WeatherMain : AppCompatActivity() {
     private lateinit var binding: ActivityWeatherMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +36,6 @@ class WeatherMain : AppCompatActivity() {
                 }
                 return true
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 return true
             }
@@ -74,18 +71,14 @@ class WeatherMain : AppCompatActivity() {
                     binding.wDate.text = date()
 
                     changeBG(condition)
-
                 }
             }
 
             override fun onFailure(call: Call<WeatherAppData>, t: Throwable) {
                 TODO("Not yet implemented")
             }
-
         })
-
     }
-
     private fun changeBG(conditions: String) {
         when(conditions){
             "Haze","Clouds","Overcast","Mist","Foggy","Partly Clouds" ->{
