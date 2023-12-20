@@ -58,19 +58,25 @@ val latestMsgMap = HashMap<String,ChatLogActivity.ChatMessage>()
                 latestMsgMap[snapshot.key!!] = chatMsg
                 refresh()
             }
+
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
                 val chatMsg = snapshot.getValue(ChatLogActivity.ChatMessage::class.java) ?:return
                 latestMsgMap[snapshot.key!!] = chatMsg
                 refresh()
             }
+
             override fun onChildRemoved(snapshot: DataSnapshot) {
                 TODO("Not yet implemented")
             }
+
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
                 TODO("Not yet implemented")
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
+            }
+
         })
     }
 
@@ -80,6 +86,7 @@ val latestMsgMap = HashMap<String,ChatLogActivity.ChatMessage>()
             adapter.add(LatestMsgRow(it))
         }
     }
+
     class LatestMsgRow(val chatMsg :ChatLogActivity.ChatMessage) : Item<GroupieViewHolder>(){
         var chatPartnerUser: UserModel? = null
         override fun bind(viewHolder: GroupieViewHolder, position: Int) {
