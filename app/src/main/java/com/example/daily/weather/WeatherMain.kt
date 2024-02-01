@@ -3,9 +3,8 @@ package com.example.daily.weather
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.SearchView
+import androidx.appcompat.widget.SearchView
 import com.example.daily.R
-import com.example.daily.databinding.ActivityMessageBinding
 import com.example.daily.databinding.ActivityWeatherMainBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,7 +28,7 @@ class WeatherMain : AppCompatActivity() {
 
     private fun searchCity() {
         val searchView = binding.wSearch
-        searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
                     fetchWeatherData(query)
