@@ -1,14 +1,11 @@
 package com.example.daily
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -21,17 +18,11 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
 import com.example.daily.databinding.ActivityHomeBinding
-import com.example.daily.ui.todo.ToDoFragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 
 class HomeActivity : AppCompatActivity() {
 
@@ -85,7 +76,6 @@ class HomeActivity : AppCompatActivity() {
             startActivity(iUpdateProfile)
         })
 
-
         //dbref = Firebase.database.getReference("Daily")
         dbref.child("UserInfo").child(UID).get().addOnSuccessListener {
             val currentName = it.child("name").value.toString()
@@ -95,11 +85,7 @@ class HomeActivity : AppCompatActivity() {
             email.setText(currentEmail)
         }
 
-
     }
-
-
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
