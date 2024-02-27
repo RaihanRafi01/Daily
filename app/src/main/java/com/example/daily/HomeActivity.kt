@@ -48,8 +48,6 @@ class HomeActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navViewHome
         val navController = findNavController(R.id.nav_host_fragment_content_drawer_example)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow , R.id.nav_todo , R.id.action_logout
@@ -71,7 +69,6 @@ class HomeActivity : AppCompatActivity() {
         }
 
         pic.setOnClickListener(View.OnClickListener {
-           // Toast.makeText(this,"yeeeeeeeeeeeeeeeee hold",Toast.LENGTH_SHORT).show()
             val iUpdateProfile = Intent(this@HomeActivity, UpdateProfile::class.java)
             startActivity(iUpdateProfile)
         })
@@ -86,7 +83,6 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.drawer_example, menu)
