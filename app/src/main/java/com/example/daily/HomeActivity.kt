@@ -36,8 +36,6 @@ class HomeActivity : AppCompatActivity() {
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
         val appbarHome = binding.appBarHome.toolbar
         setSupportActionBar(appbarHome)
 
