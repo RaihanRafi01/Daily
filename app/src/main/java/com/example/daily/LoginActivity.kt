@@ -40,7 +40,6 @@ private lateinit var firebaseAuth: FirebaseAuth
                     }else{
                         Toast.makeText(this@LoginActivity,"Wrong Name and Password",Toast.LENGTH_SHORT).show()
                     }
-
                 }
             }else{
                 Toast.makeText(this@LoginActivity,"Please Provide Name and Password",Toast.LENGTH_SHORT).show()
