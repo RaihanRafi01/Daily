@@ -44,7 +44,6 @@ private lateinit var firebaseAuth: FirebaseAuth
             }else{
                 Toast.makeText(this@LoginActivity,"Please Provide Name and Password",Toast.LENGTH_SHORT).show()
             }
-
         })
 
         binding.btnReg.setOnClickListener {
