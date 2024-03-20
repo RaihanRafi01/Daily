@@ -45,7 +45,6 @@ private lateinit var firebaseAuth: FirebaseAuth
                 Toast.makeText(this@LoginActivity,"Please Provide Name and Password",Toast.LENGTH_SHORT).show()
             }
         })
-
         binding.btnReg.setOnClickListener {
             val iReg = Intent(this@LoginActivity, RegistrationActivity::class.java)
             startActivity(iReg)
