@@ -20,6 +20,8 @@ private lateinit var firebaseAuth: FirebaseAuth
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         firebaseAuth = FirebaseAuth.getInstance()
 
         binding.btnLogin.setOnClickListener(View.OnClickListener {
