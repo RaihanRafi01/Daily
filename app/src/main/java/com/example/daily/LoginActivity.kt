@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.daily.databinding.ActivityLoginBinding
 import com.example.daily.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
-
 class LoginActivity : AppCompatActivity() {
 private lateinit var binding : ActivityLoginBinding
 private lateinit var firebaseAuth: FirebaseAuth
